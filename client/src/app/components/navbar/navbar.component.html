@@ -1,1 +1,25 @@
-<p>navbar works!</p>
+<nav class="navbar">
+  <div class="navbar__logo-wrapper">
+    <a routerLink="/" class="navbar__logo-wrapper__link"
+      ><fa-icon
+        [icon]="faPersonSkiing"
+        class="navbar__logo-wrapper__link__logo"
+      ></fa-icon
+    ></a>
+  </div>
+  <ul class="navbar__menu">
+    <li class="navbar__menu__item">
+      <a routerLink="/" class="navbar__menu__item__link">Dashboard</a>
+    </li>
+    <li class="navbar__menu__item" *ngIf="user">
+      <a routerLink="/profile" class="navbar__menu__item__link">{{ user }}</a>
+    </li>
+    <li class="navbar__menu__item" *ngIf="!user">
+      <a
+        routerLink="/login"
+        class="navbar__menu__item__link navbar__menu__item__link--button"
+        >Login</a
+      >
+    </li>
+  </ul>
+</nav>

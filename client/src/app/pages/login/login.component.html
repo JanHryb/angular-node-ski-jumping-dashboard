@@ -1,1 +1,68 @@
-<p>login works!</p>
+<main class="main">
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    class="form"
+    ngNativeValidate
+  >
+    <header class="header-wrapper">
+      <h2 class="header">Welocme back</h2>
+    </header>
+    <div class="form-items-wrapper">
+      <label
+        for="username"
+        class="form-label form-label--error"
+        *ngIf="errorMessages.email"
+        >email - {{ errorMessages.email }}</label
+      >
+      <label for="email" class="form-label" *ngIf="!errorMessages.email"
+        >email</label
+      >
+      <input
+        type="email"
+        formControlName="email"
+        id="email"
+        class="form-input"
+        required
+      />
+    </div>
+    <div class="form-items-wrapper">
+      <label
+        for="password"
+        class="form-label form-label--error"
+        *ngIf="errorMessages.password"
+        >password - {{ errorMessages.password }}</label
+      >
+      <label for="password" class="form-label" *ngIf="!errorMessages.password"
+        >password</label
+      >
+      <input
+        type="password"
+        formControlName="password"
+        id="password"
+        class="form-input"
+        required
+      />
+    </div>
+    <div class="form-items-wrapper form-items-wrapper-checkbox">
+      <input
+        type="checkbox"
+        formControlName="rememberMe"
+        id="rememberMe"
+        class="form-input form-input-checkbox"
+      />
+      <label for="rememberMe" class="form-label form-label-checkbox"
+        >Remember me</label
+      >
+    </div>
+    <div class="form-items-wrapper">
+      <button type="submit" class="form-button">Login</button>
+    </div>
+    <div class="form-items-wrapper">
+      <p>
+        Don't have an account?
+        <a class="form-link" routerLink="/register">register</a>
+      </p>
+    </div>
+  </form>
+</main>

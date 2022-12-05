@@ -1,12 +1,37 @@
 require("dotenv").config();
 require("./config/databaseConnect");
 const express = require("express");
+const session = require("express-session");
+const passport = require("passport");
+const MongoStore = require("connect-mongo");
+const cors = require("cors");
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: ["http://localhost:4200"],
+    credentials: true,
+  })
+);
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URL,
+      dbName: "test",
+    }),
+  })
+);
+app.use(passport.initialize());
+app.use(passport.authenticate("session"));
+require("./config/passport");
 
+// routes
 app.use("/user", require("./routes/user"));
 
 const PORT = process.env.PORT || 5000;

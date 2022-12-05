@@ -1,1 +1,96 @@
-<p>register works!</p>
+<main class="main">
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+    class="form"
+    ngNativeValidate
+  >
+    <header class="header-wrapper">
+      <h2 class="header">Register</h2>
+    </header>
+    <div class="form-items-wrapper">
+      <label
+        for="username"
+        class="form-label form-label--error"
+        *ngIf="errorMessages.username"
+        >username - {{ errorMessages.username }}</label
+      >
+      <label for="username" class="form-label" *ngIf="!errorMessages.username"
+        >username</label
+      >
+      <input
+        type="username"
+        formControlName="username"
+        id="username"
+        class="form-input"
+        required
+      />
+    </div>
+    <div class="form-items-wrapper">
+      <label
+        for="email"
+        class="form-label form-label--error"
+        *ngIf="errorMessages.email"
+        >email - {{ errorMessages.email }}</label
+      >
+      <label for="email" class="form-label" *ngIf="!errorMessages.email"
+        >email</label
+      >
+      <input
+        type="email"
+        formControlName="email"
+        id="email"
+        class="form-input"
+        required
+      />
+    </div>
+    <div class="form-items-wrapper">
+      <label
+        for="password"
+        class="form-label form-label--error"
+        *ngIf="errorMessages.password"
+        >password - {{ errorMessages.password }}</label
+      >
+      <label for="password" class="form-label" *ngIf="!errorMessages.password"
+        >password</label
+      >
+      <input
+        type="password"
+        formControlName="password"
+        id="password"
+        class="form-input"
+        required
+      />
+    </div>
+    <div class="form-items-wrapper">
+      <label
+        for="passwordRepeat"
+        class="form-label form-label--error"
+        *ngIf="errorMessages.passwordRepeat"
+        >password repeat - {{ errorMessages.passwordRepeat }}</label
+      >
+      <label
+        for="password"
+        class="form-label"
+        *ngIf="!errorMessages.passwordRepeat"
+        >password repeat</label
+      >
+      <input
+        type="password"
+        formControlName="passwordRepeat"
+        id="passwordRepeat"
+        class="form-input"
+        required
+      />
+    </div>
+    <div class="form-items-wrapper">
+      <button type="submit" class="form-button">Create account</button>
+    </div>
+    <div class="form-items-wrapper">
+      <p class="form-plain-text">
+        Already have an account?
+        <a class="form-link" href="/user/login">login</a>
+      </p>
+    </div>
+  </form>
+</main>
