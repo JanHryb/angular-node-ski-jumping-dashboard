@@ -2,6 +2,7 @@ require("dotenv").config();
 require("./config/databaseConnect");
 const express = require("express");
 const session = require("express-session");
+const flash = require("express-flash");
 const passport = require("passport");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
@@ -27,6 +28,7 @@ app.use(
     }),
   })
 );
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.authenticate("session"));
 require("./config/passport");

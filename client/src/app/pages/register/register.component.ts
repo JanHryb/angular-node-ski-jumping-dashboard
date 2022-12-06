@@ -80,6 +80,7 @@ export class RegisterComponent {
         })
         .subscribe(
           (response) => {
+            alert('your account has been created');
             this.router.navigate(['/login']);
           },
           (error) => {

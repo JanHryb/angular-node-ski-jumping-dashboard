@@ -5,7 +5,7 @@ const passport = require("passport");
 const { StatusCodes } = require("http-status-codes");
 const { requireAuth } = require("../middleware/auth");
 
-router.get("/", requireAuth, (req, res) => {
+router.get("", requireAuth, (req, res) => {
   const user = req.user;
   return res.status(StatusCodes.OK).json(user);
 });
@@ -77,6 +77,7 @@ router.post(
     } else {
       req.session.cookie.maxAge = null; // cookie expires at end of session
     }
+    req.flash("greeting", "hello world");
     return res.status(StatusCodes.OK).json("successfull login");
   }
 );
