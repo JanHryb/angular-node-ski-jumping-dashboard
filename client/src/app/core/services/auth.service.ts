@@ -7,15 +7,18 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  auth() {
+  public auth() {
     this.http
       .get('http://localhost:5000/user', { withCredentials: true })
       .subscribe(
         (response) => {
-          console.log(response);
+          const user = JSON.parse(JSON.stringify(response));
+          console.log(user);
+          return user;
         },
         (error) => {
           console.log(error);
+          return null;
         }
       );
   }
