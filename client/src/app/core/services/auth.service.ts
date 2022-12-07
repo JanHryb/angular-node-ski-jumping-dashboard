@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,19 +8,16 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  public auth() {
-    this.http
-      .get('http://localhost:5000/user', { withCredentials: true })
-      .subscribe(
-        (response) => {
-          const user = JSON.parse(JSON.stringify(response));
-          console.log(user);
-          return user;
-        },
-        (error) => {
-          console.log(error);
-          return null;
-        }
+  public getUser(): Observable<any> {
+    return this.http
+      .get('http://localhost:5000/user', {
+        withCredentials: true,
+        observe: 'response',
+      })
+      .pipe(
+        map((response: any) => {
+          return response;
+        })
       );
   }
 }

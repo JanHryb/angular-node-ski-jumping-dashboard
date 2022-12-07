@@ -1,4 +1,5 @@
-<main class="main">
+<app-navbar email="{{ user.email }}" *ngIf="dataLoaded"></app-navbar>
+<main *ngIf="dataLoaded" class="main">
   <form
     [formGroup]="loginForm"
     (ngSubmit)="onSubmit()"

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,8 +10,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-  constructor(private http: HttpClient, private router: Router) {}
-
+  constructor(
+    private authService: AuthService,
+    private http: HttpClient,
+    private router: Router
+  ) {}
+  user: any = false;
+  dataLoaded: boolean = false;
   registerForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
@@ -89,5 +95,16 @@ export class RegisterComponent {
           }
         );
     }
+  }
+  ngOnInit() {
+    this.authService.getUser().subscribe(
+      (result) => {
+        this.user = result.body;
+        this.router.navigate(['/dashboard']);
+      },
+      (error) => {
+        this.dataLoaded = true;
+      }
+    );
   }
 }

@@ -1,3 +1,4 @@
-TODO: add angular material themes
-TODO: add anguar http client
-TODO: user auth
+DONE: add angular material themes
+DONE: add anguar http client
+DONE: user auth
+TODO: navbar -> onhoverlogout

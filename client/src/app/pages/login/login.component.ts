@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private http: HttpClient,
+    private router: Router
+  ) {}
+  user: any = false;
+  dataLoaded: boolean = false;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -63,5 +70,15 @@ export class LoginComponent {
           }
         );
     }
+  }
+  ngOnInit() {
+    this.authService.getUser().subscribe(
+      (result) => {
+        this.router.navigate(['/dashboard']);
+      },
+      (error) => {
+        this.dataLoaded = true;
+      }
+    );
   }
 }

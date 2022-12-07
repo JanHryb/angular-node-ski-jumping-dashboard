@@ -11,10 +11,10 @@
     <li class="navbar__menu__item">
       <a routerLink="/" class="navbar__menu__item__link">Dashboard</a>
     </li>
-    <li class="navbar__menu__item" *ngIf="user">
-      <a routerLink="/profile" class="navbar__menu__item__link">{{ user }}</a>
+    <li class="navbar__menu__item" *ngIf="email">
+      <a routerLink="" class="navbar__menu__item__link">{{ email }}</a>
     </li>
-    <li class="navbar__menu__item" *ngIf="!user">
+    <li class="navbar__menu__item" *ngIf="!email">
       <a
         routerLink="/login"
         class="navbar__menu__item__link navbar__menu__item__link--button"

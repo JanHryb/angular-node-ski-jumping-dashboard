@@ -1,2 +1,5 @@
-<p>dashboard works!</p>
-<p *ngIf="!user">hello {{ user }}</p>
+<!-- prettir-ignore -->
+<main *ngIf="dataLoaded" class="main">
+  <app-navbar email="{{ user.email }}"></app-navbar>
+  <h1>hello {{ user.username }}</h1>
+</main>
