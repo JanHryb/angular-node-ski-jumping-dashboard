@@ -10,6 +10,17 @@ router.get("", requireAuth, (req, res) => {
   return res.status(StatusCodes.OK).json(user);
 });
 
+router.post("/logout", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      console.log(err);
+      return next();
+    }
+    res.clearCookie("connect.sid");
+    return res.status(StatusCodes.OK).json("you are logged out");
+  });
+});
+
 router.post("/register", async (req, res) => {
   const { username, email, password, passwordRepeat } = req.body;
   let validForm = true;

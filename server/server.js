@@ -6,6 +6,7 @@ const flash = require("express-flash");
 const passport = require("passport");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(
   })
 );
 app.use(flash());
+app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.authenticate("session"));
 require("./config/passport");
