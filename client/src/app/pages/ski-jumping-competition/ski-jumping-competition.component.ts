@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
-  selector: 'app-not-found',
-  templateUrl: './not-found.component.html',
-  styleUrls: ['./not-found.component.scss'],
+  selector: 'app-ski-jumping-competition',
+  templateUrl: './ski-jumping-competition.component.html',
+  styleUrls: ['./ski-jumping-competition.component.scss'],
 })
-export class NotFoundComponent implements OnInit {
+export class SkiJumpingCompetitionComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
   user: any = false;
   dataLoaded: boolean = false;
@@ -18,7 +18,7 @@ export class NotFoundComponent implements OnInit {
         this.dataLoaded = true;
       },
       (error) => {
-        this.dataLoaded = true;
+        this.router.navigate(['/login']);
       }
     );
   }

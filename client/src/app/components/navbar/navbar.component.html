@@ -12,7 +12,9 @@
       <a routerLink="/" class="navbar__menu__item__link">Dashboard</a>
     </li>
     <li class="navbar__menu__item navbar__menu__item-user" *ngIf="email">
-      <a routerLink="" class="navbar__menu__item__link">{{ email }}</a>
+      <a routerLink="/dashboard/profile" class="navbar__menu__item__link">{{
+        email
+      }}</a>
       <ul class="navbar__menu__item-user__dropdown-menu">
         <li className="navbar__menu__item-user__dropdown-menu__item">
           <button

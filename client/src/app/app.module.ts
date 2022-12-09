@@ -14,6 +14,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { SkiJumpersComponent } from './pages/ski-jumpers/ski-jumpers.component';
+import { SkiJumpingCompetitionComponent } from './pages/ski-jumping-competition/ski-jumping-competition.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
     NotFoundComponent,
     NavbarComponent,
     FooterComponent,
+    ProfileComponent,
+    SkiJumpersComponent,
+    SkiJumpingCompetitionComponent,
   ],
   imports: [
     BrowserModule,

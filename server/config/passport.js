@@ -11,11 +11,13 @@ passport.use(
         const user = await User.findOne({ email });
 
         if (!user) {
-          return done(null, false, { message: "email or password incorrect" });
+          return done(null, false, {
+            message: "email or password is incorrect",
+          });
         }
         if (!user.verified) {
           return done(null, false, {
-            message: "please verify your email",
+            message: "your email is not verified",
           });
         }
 
@@ -27,12 +29,12 @@ passport.use(
             return done(null, user);
           } else {
             return done(null, false, {
-              message: "email or password incorrect",
+              message: "email or password is incorrect",
             });
           }
         });
       } catch (err) {
-        return done(err);
+        return done(err, false, { message: "internal server error" });
       }
     }
   )

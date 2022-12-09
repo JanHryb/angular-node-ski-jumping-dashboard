@@ -7,7 +7,4 @@ import { AuthService } from './core/services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  constructor(private http: HttpClient, private router: Router) {}
-  title = 'client';
-}
+export class AppComponent {}

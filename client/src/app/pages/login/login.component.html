@@ -9,6 +9,9 @@
     <header class="header-wrapper">
       <h2 class="header">Welocme back</h2>
     </header>
+    <div class="form-items-wrapper" *ngIf="serverErrorMessage">
+      <p class="form-label--error">{{ serverErrorMessage }}</p>
+    </div>
     <div class="form-items-wrapper">
       <label
         for="username"

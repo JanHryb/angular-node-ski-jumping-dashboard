@@ -1,9 +1,13 @@
 .footer {
   flex-shrink: 0;
+  height: 55px;
+}
+.footer p {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.95);
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.95);
-  padding: 1em;
-  color: #fff;
 }/*# sourceMappingURL=footer.component.css.map */

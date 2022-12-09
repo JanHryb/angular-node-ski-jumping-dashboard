@@ -1,0 +1,73 @@
+<main *ngIf="dataLoaded" class="main">
+  <app-navbar email="{{ user.email }}"></app-navbar>
+  <h1 class="header">Hello {{ user.username }}</h1>
+  <div class="user-data-wrapper">
+    <div class="user-data-wrapper__item">
+      <p class="user-data-wrapper__item__label">Email:</p>
+      <p class="user-data-wrapper__item__value">
+        {{ user.email }}
+      </p>
+    </div>
+    <div class="user-data-wrapper__item">
+      <p class="user-data-wrapper__item__label">Username:</p>
+      <p class="user-data-wrapper__item__value" *ngIf="!usernameInput">
+        {{ user.username }}
+        <fa-icon
+          [icon]="faPenToSquare"
+          (click)="switchEditInput('username')"
+          class="user-data-wrapper__item__edit-icon"
+        ></fa-icon>
+      </p>
+      <div
+        class="user-data-wrapper__item__edit-input-wrapper"
+        *ngIf="usernameInput"
+      >
+        <input
+          class="user-data-wrapper__item__edit-input-wrapper__input"
+          type="text"
+          #username
+        />
+        <fa-icon
+          [icon]="faCheck"
+          class="user-data-wrapper__item__edit-input-wrapper__done-icon"
+          (click)="updateData('username', username.value)"
+        ></fa-icon>
+        <fa-icon
+          [icon]="faXmark"
+          class="user-data-wrapper__item__edit-input-wrapper__cancel-icon"
+          (click)="switchEditInput('username')"
+        ></fa-icon>
+      </div>
+    </div>
+    <div class="user-data-wrapper__item">
+      <p class="user-data-wrapper__item__label">Password:</p>
+      <p class="user-data-wrapper__item__value" *ngIf="!passwordInput">
+        <fa-icon
+          [icon]="faPenToSquare"
+          (click)="switchEditInput('password')"
+          class="user-data-wrapper__item__edit-icon"
+        ></fa-icon>
+      </p>
+      <div
+        class="user-data-wrapper__item__edit-input-wrapper"
+        *ngIf="passwordInput"
+      >
+        <input
+          class="user-data-wrapper__item__edit-input-wrapper__input"
+          type="password"
+          #password
+        />
+        <fa-icon
+          [icon]="faCheck"
+          class="user-data-wrapper__item__edit-input-wrapper__done-icon"
+          (click)="updateData('password', password.value)"
+        ></fa-icon>
+        <fa-icon
+          [icon]="faXmark"
+          class="user-data-wrapper__item__edit-input-wrapper__cancel-icon"
+          (click)="switchEditInput('password')"
+        ></fa-icon>
+      </div>
+    </div>
+  </div>
+</main>

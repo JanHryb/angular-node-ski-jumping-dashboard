@@ -1,0 +1,48 @@
+.main .header {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+.main .user-data-wrapper {
+  margin-left: 20em;
+  margin-right: 20em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.main .user-data-wrapper__item {
+  display: flex;
+}
+.main .user-data-wrapper__item__label {
+  font-weight: bold;
+  margin-right: 0.5em;
+}
+.main .user-data-wrapper__item__value {
+  margin-right: 0.5em;
+}
+.main .user-data-wrapper__item__edit-icon {
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-right: 1em;
+}
+.main .user-data-wrapper__item__edit-input-wrapper__input {
+  margin-right: 0.5em;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  padding: 0.15em;
+  border: none;
+  border: 2px solid #1363df;
+  outline: none;
+}
+.main .user-data-wrapper__item__edit-input-wrapper__done-icon {
+  color: green;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-right: 0.5em;
+}
+.main .user-data-wrapper__item__edit-input-wrapper__cancel-icon {
+  color: red;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-right: 1em;
+}/*# sourceMappingURL=profile.component.css.map */

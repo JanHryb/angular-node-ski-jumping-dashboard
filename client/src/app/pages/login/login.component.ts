@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private http: HttpClient,
@@ -27,6 +27,7 @@ export class LoginComponent {
     password: '',
     server: '',
   };
+  serverErrorMessage = '';
 
   validateForm = () => {
     if (this.loginForm.value.email && this.loginForm.value.password) {
@@ -62,11 +63,7 @@ export class LoginComponent {
             this.router.navigate(['/dashboard']);
           },
           (error) => {
-            this.errorMessages = {
-              email: 'password or email incorrect',
-              password: 'password or email incorrect',
-              server: '',
-            };
+            this.serverErrorMessage = error.error.message;
           }
         );
     }

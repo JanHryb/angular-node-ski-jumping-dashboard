@@ -63,7 +63,6 @@
   left: 0;
   list-style: none;
   background: #7978ff;
-  padding: 0.8em;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -80,4 +79,14 @@
   font-size: 0.95em;
   text-decoration: none;
   color: #fff;
+}
+.navbar__menu__item-user__dropdown-menu__item__button {
+  padding: 0.8em;
+  height: 100%;
+  width: 100%;
+  font-size: 1.05em;
+  border: 2px solid #000;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
 }/*# sourceMappingURL=navbar.component.css.map */

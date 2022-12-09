@@ -2,6 +2,7 @@ DONE: add angular material themes
 DONE: add anguar http client
 DONE: user auth
 DONE: navbar -> onhover, logout
+DONE: user profile with edit option
 TODO: ski jumping dashboard
         1.mongoDB-> kolekcja skoczkow, kolekcja zawodow narciarskich(zawierajaca id skoczkow bioracych udzial)
         2.stworzyc menu z dwoma zakladkami skoczkowie, zawody narciarskie 

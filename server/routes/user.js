@@ -10,10 +10,61 @@ router.get("", requireAuth, (req, res) => {
   return res.status(StatusCodes.OK).json(user);
 });
 
+router.post("/update", async (req, res) => {
+  console.log("workin");
+  const { userId, username, password } = req.body;
+
+  if (username) {
+    let validData = true;
+
+    if (username.length < 3) {
+      validData = false;
+    }
+    if (username.indexOf(" ") >= 0) {
+      validData = false;
+    }
+    if (!validData) {
+      return res.status(StatusCodes.BAD_REQUEST).end();
+    }
+    try {
+      await User.findByIdAndUpdate({ _id: userId }, { username });
+      return res
+        .status(StatusCodes.OK)
+        .json("username has been sucessfully updated");
+    } catch (err) {
+      return res.status(StatusCodes.BAD_REQUEST).end();
+    }
+  }
+  if (password) {
+    let validData = true;
+
+    if (password.length < 6) {
+      validData = false;
+    }
+    if (!validData) {
+      return res.status(StatusCodes.BAD_REQUEST).end();
+    }
+    try {
+      bcrypt.hash(password, 10, async (err, hash) => {
+        if (err) {
+          throw new Error("bcrypt error");
+        }
+        await User.findByIdAndUpdate({ _id: userId }, { password: hash });
+        return res
+          .status(StatusCodes.OK)
+          .json("password has been sucessfully updated");
+      });
+    } catch (err) {
+      return res.status(StatusCodes.BAD_REQUEST).end();
+    }
+  } else {
+    return res.status(StatusCodes.BAD_REQUEST).end();
+  }
+});
+
 router.post("/logout", (req, res, next) => {
   req.logout((err) => {
     if (err) {
-      console.log(err);
       return next();
     }
     res.clearCookie("connect.sid");
@@ -71,26 +122,40 @@ router.post("/register", async (req, res) => {
         return res.status(StatusCodes.CREATED).json("account has been created");
       });
     } catch (err) {
-      return res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).end();
     }
   } else {
     return res.status(StatusCodes.BAD_REQUEST).json(errorMessages);
   }
 });
 
-router.post(
-  "/login",
-  passport.authenticate("local", { failureMessage: true }),
-  (req, res) => {
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
     const { rememberMe } = req.body;
+
+    if (err) {
+      console.log(err);
+      return res
+        .status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .json({ message: info.message });
+    }
+    if (!user) {
+      return res
+        .status(StatusCodes.BAD_REQUEST)
+        .json({ message: info.message });
+    }
     if (rememberMe) {
       req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 7; //cookie expires after 7 days
     } else {
       req.session.cookie.maxAge = null; // cookie expires at end of session
     }
-    req.flash("greeting", "hello world");
-    return res.status(StatusCodes.OK).json("successfull login");
-  }
-);
+    req.login(user, (err) => {
+      if (err) {
+        return next();
+      }
+      return res.status(StatusCodes.OK).json("successfull login");
+    });
+  })(req, res, next);
+});
 
 module.exports = router;

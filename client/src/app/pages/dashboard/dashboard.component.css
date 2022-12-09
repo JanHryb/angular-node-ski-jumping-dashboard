@@ -1,1 +1,34 @@
-/*# sourceMappingURL=dashboard.component.css.map */
+.main {
+  height: calc(100% - 120px);
+}
+.main .card-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.main .card-wrapper__item {
+  margin: 2em;
+  width: 400px;
+  height: 400px;
+  display: flex;
+}
+.main .card-wrapper__item__link {
+  border: 2px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  text-decoration: none;
+  color: #000;
+}
+.main .card-wrapper__item__link:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.main .card-wrapper__item__link__title {
+  text-transform: uppercase;
+}/*# sourceMappingURL=dashboard.component.css.map */

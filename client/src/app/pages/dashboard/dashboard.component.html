@@ -1,5 +1,24 @@
 <!-- prettir-ignore -->
 <main *ngIf="dataLoaded" class="main">
   <app-navbar email="{{ user.email }}"></app-navbar>
-  <h1>hello {{ user.username }}</h1>
+  <div class="card-wrapper">
+    <div class="card-wrapper__item">
+      <a routerLink="/dashboard/profile" class="card-wrapper__item__link">
+        <h2 class="card-wrapper__item__link__title">profile</h2>
+      </a>
+    </div>
+    <div class="card-wrapper__item">
+      <a routerLink="/dashboard/ski-jumpers" class="card-wrapper__item__link">
+        <h2 class="card-wrapper__item__link__title">ski jumpers</h2>
+      </a>
+    </div>
+    <div class="card-wrapper__item">
+      <a
+        routerLink="/dashboard/ski-jumping-competition"
+        class="card-wrapper__item__link"
+      >
+        <h2 class="card-wrapper__item__link__title">ski jumping competition</h2>
+      </a>
+    </div>
+  </div>
 </main>

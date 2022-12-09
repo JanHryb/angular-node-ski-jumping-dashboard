@@ -1,0 +1,52 @@
+.main {
+  .header {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  .user-data-wrapper {
+    margin-left: 20em;
+    margin-right: 20em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    &__item {
+      display: flex;
+      &__label {
+        font-weight: bold;
+        margin-right: 0.5em;
+      }
+      &__value {
+        margin-right: 0.5em;
+      }
+      &__edit-icon {
+        cursor: pointer;
+        font-size: 1.1em;
+        margin-right: 1em;
+      }
+      &__edit-input-wrapper {
+        &__input {
+          margin-right: 0.5em;
+          font-family: "Montserrat", sans-serif;
+          font-size: 1em;
+          padding: 0.15em;
+          border: none;
+          border: 2px solid #1363df;
+          outline: none;
+        }
+        &__done-icon {
+          color: green;
+          cursor: pointer;
+          font-size: 1.1em;
+          margin-right: 0.5em;
+        }
+        &__cancel-icon {
+          color: red;
+          cursor: pointer;
+          font-size: 1.1em;
+          margin-right: 1em;
+        }
+      }
+    }
+  }
+}
