@@ -11,7 +11,6 @@ router.get("", requireAuth, (req, res) => {
 });
 
 router.post("/update", async (req, res) => {
-  console.log("workin");
   const { userId, username, password } = req.body;
 
   if (username) {
@@ -73,7 +72,8 @@ router.post("/logout", (req, res, next) => {
 });
 
 router.post("/register", async (req, res) => {
-  const { username, email, password, passwordRepeat } = req.body;
+  let { username, email, password, passwordRepeat } = req.body;
+  username = username.charAt(0).toUpperCase() + username.slice(1);
   let validForm = true;
   let errorMessages = {
     username: "",

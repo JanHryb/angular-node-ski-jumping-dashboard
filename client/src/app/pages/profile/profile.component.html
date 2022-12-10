@@ -1,11 +1,21 @@
 <main *ngIf="dataLoaded" class="main">
   <app-navbar email="{{ user.email }}"></app-navbar>
-  <h1 class="header">Hello {{ user.username }}</h1>
+
   <div class="user-data-wrapper">
+    <h1 class="header">Hello {{ user.username }}</h1>
     <div class="user-data-wrapper__item">
       <p class="user-data-wrapper__item__label">Email:</p>
       <p class="user-data-wrapper__item__value">
         {{ user.email }}
+      </p>
+    </div>
+    <div class="user-data-wrapper__item">
+      <p class="user-data-wrapper__item__label">Email verify status:</p>
+      <p class="user-data-wrapper__item__value" *ngIf="user.verified">
+        verified
+      </p>
+      <p class="user-data-wrapper__item__value" *ngIf="!user.verified">
+        not verified
       </p>
     </div>
     <div class="user-data-wrapper__item">

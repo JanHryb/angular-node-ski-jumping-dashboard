@@ -35,6 +35,7 @@ require("./config/passport");
 
 // routes
 app.use("/user", require("./routes/user"));
+app.use("/ski", require("./routes/ski"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

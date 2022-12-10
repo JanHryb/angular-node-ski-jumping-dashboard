@@ -1,3 +1,173 @@
 <main *ngIf="dataLoaded" class="main">
   <app-navbar email="{{ user.email }}"></app-navbar>
+  <div class="content-wrapper" *ngIf="!detailPage">
+    <form
+      ngNativeValidate
+      [formGroup]="addCompetitionForm"
+      (ngSubmit)="onSubmit()"
+      class="form"
+    >
+      <header class="header-wrapper">
+        <h2 class="header">Create Competition</h2>
+      </header>
+      <div class="form-items-wrapper">
+        <label for="name" class="form-label"> Name</label>
+        <input
+          type="text"
+          formControlName="name"
+          id="name"
+          class="form-input"
+          required
+        />
+      </div>
+      <div class="form-items-wrapper">
+        <label for="lastName" class="form-label">City</label>
+        <input
+          type="text"
+          formControlName="city"
+          id="city"
+          class="form-input"
+          required
+        />
+      </div>
+      <div class="form-items-wrapper">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input
+          type="date"
+          formControlName="startDate"
+          id="startDate"
+          class="form-input"
+          required
+        />
+      </div>
+      <div class="form-items-wrapper">
+        <button type="submit" class="form-button">Add</button>
+      </div>
+    </form>
+    <table class="ski-jumpers-table" *ngIf="skiJumpingCompetition.length > 0">
+      <tr>
+        <h2>Ski Competitions</h2>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Start Date</th>
+        <th>Added by</th>
+        <th>Details</th>
+        <th>Delete</th>
+      </tr>
+      <tr
+        class="ski-jumpers-wrapper__item"
+        *ngFor="let competition of skiJumpingCompetition"
+      >
+        <td>{{ competition.name }}</td>
+        <td>{{ competition.city }}</td>
+        <td>{{ competition.startDate | date }}</td>
+        <td>{{ competition.userId.email }}</td>
+        <td class="icons-wrapper">
+          <fa-icon
+            [icon]="faEye"
+            class="user-data-wrapper__item__edit-input-wrapper__done-icon"
+            (click)="viewDetails(competition._id)"
+          ></fa-icon>
+        </td>
+        <td class="icons-wrapper">
+          <fa-icon
+            [icon]="faTrashCan"
+            class="user-data-wrapper__item__edit-input-wrapper__done-icon"
+            (click)="deleteCompetition(competition._id)"
+          ></fa-icon>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="content-wrapper" *ngIf="detailPage">
+    <form
+      ngNativeValidate
+      [formGroup]="addJumperListForm"
+      (ngSubmit)="onSubmit2()"
+      class="form"
+    >
+      <header class="header-wrapper">
+        <h2 class="header">Add jumper</h2>
+      </header>
+      <div class="form-items-wrapper">
+        <select formControlName="skiJumperId" required>
+          <option disabled selected value>
+            first name / last name / personal id
+          </option>
+          <option value="{{ jumper._id }}" *ngFor="let jumper of skiJumpers">
+            {{ jumper.firstName }} / {{ jumper.lastName }} /
+            {{ jumper.personalId }}
+          </option>
+        </select>
+      </div>
+      <div class="form-items-wrapper">
+        <button type="submit" class="form-button">Add</button>
+      </div>
+    </form>
+    <table class="ski-jumpers-table" *ngIf="skiJumpingCompetition2.length > 0">
+      <tr>
+        <h2>Ski Competition</h2>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Start Date</th>
+        <th>Added by</th>
+        <th>Go Back</th>
+        <th>Delete</th>
+      </tr>
+      <tr
+        class="ski-jumpers-wrapper__item"
+        *ngFor="let competition of skiJumpingCompetition2"
+      >
+        <td>{{ competition.name }}</td>
+        <td>{{ competition.city }}</td>
+        <td>{{ competition.startDate | date }}</td>
+        <td>{{ competition.userId.email }}</td>
+        <td class="icons-wrapper">
+          <fa-icon
+            [icon]="faArrowLeft"
+            class="user-data-wrapper__item__edit-input-wrapper__done-icon"
+            (click)="viewDetails(competition._id)"
+          ></fa-icon>
+        </td>
+        <td class="icons-wrapper">
+          <fa-icon
+            [icon]="faTrashCan"
+            class="user-data-wrapper__item__edit-input-wrapper__done-icon"
+            (click)="deleteCompetition2(competition._id)"
+          ></fa-icon>
+        </td>
+      </tr>
+    </table>
+    <table class="ski-jumpers-table" *ngIf="jumperList.length > 0">
+      <tr>
+        <h2>Participants</h2>
+      </tr>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Personal Id</th>
+        <th>Added by</th>
+        <th>Delete</th>
+      </tr>
+      <tr class="ski-jumpers-wrapper__item" *ngFor="let item of jumperList">
+        <td>{{ item.skiJumperId.firstName }}</td>
+        <td>{{ item.skiJumperId.lastName }}</td>
+        <td>{{ item.skiJumperId.age }}</td>
+        <td>{{ item.skiJumperId.personalId }}</td>
+        <td>{{ item.userId.email }}</td>
+        <td class="icons-wrapper">
+          <fa-icon
+            [icon]="faTrashCan"
+            class="user-data-wrapper__item__edit-input-wrapper__done-icon"
+            (click)="deleteList(item._id)"
+          ></fa-icon>
+        </td>
+      </tr>
+    </table>
+  </div>
 </main>

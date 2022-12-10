@@ -7,7 +7,6 @@ import {
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-profile',

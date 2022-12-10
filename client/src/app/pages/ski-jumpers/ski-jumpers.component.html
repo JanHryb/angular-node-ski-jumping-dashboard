@@ -1,3 +1,85 @@
 <main *ngIf="dataLoaded" class="main">
   <app-navbar email="{{ user.email }}"></app-navbar>
+  <div class="content-wrapper">
+    <form
+      ngNativeValidate
+      [formGroup]="addSkiJumperForm"
+      (ngSubmit)="onSubmit()"
+      class="form"
+    >
+      <header class="header-wrapper">
+        <h2 class="header">Create Ski Jumper</h2>
+      </header>
+      <div class="form-items-wrapper">
+        <label for="firstName" class="form-label">First Name</label>
+        <input
+          type="text"
+          formControlName="firstName"
+          id="firstName"
+          class="form-input"
+          required
+        />
+      </div>
+      <div class="form-items-wrapper">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input
+          type="text"
+          formControlName="lastName"
+          id="lastName"
+          class="form-input"
+          required
+        />
+      </div>
+      <div class="form-items-wrapper">
+        <label for="age" class="form-label">Age</label>
+        <input
+          type="number"
+          formControlName="age"
+          id="age"
+          class="form-input"
+          required
+        />
+      </div>
+      <div class="form-items-wrapper">
+        <label for="personalId" class="form-label">Personal Id</label>
+        <input
+          type="number"
+          formControlName="personalId"
+          id="personalId"
+          class="form-input"
+          required
+        />
+      </div>
+      <div class="form-items-wrapper">
+        <button type="submit" class="form-button">Add</button>
+      </div>
+    </form>
+    <table class="ski-jumpers-table" *ngIf="skiJumpers.length > 0">
+      <tr>
+        <h2>Ski Jumpers</h2>
+      </tr>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Personal Id</th>
+        <th>Added by</th>
+        <th>Delete</th>
+      </tr>
+      <tr class="ski-jumpers-wrapper__item" *ngFor="let jumper of skiJumpers">
+        <td>{{ jumper.firstName }}</td>
+        <td>{{ jumper.lastName }}</td>
+        <td>{{ jumper.age }}</td>
+        <td>{{ jumper.personalId }}</td>
+        <td>{{ jumper.userId.email }}</td>
+        <td class="icons-wrapper">
+          <fa-icon
+            [icon]="faTrashCan"
+            class="user-data-wrapper__item__edit-input-wrapper__done-icon"
+            (click)="deleteSkiJumper(jumper._id)"
+          ></fa-icon>
+        </td>
+      </tr>
+    </table>
+  </div>
 </main>
