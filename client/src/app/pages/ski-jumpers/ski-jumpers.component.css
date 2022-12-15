@@ -1,10 +1,13 @@
 .content-wrapper {
-  padding-top: 2em;
+  padding-top: 4em;
+  padding-bottom: 4em;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .content-wrapper .form {
+  margin-right: 4em;
   padding: 2em;
   width: -webkit-min-content;
   width: -moz-min-content;
@@ -13,7 +16,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .content-wrapper .form .form-items-wrapper {
   width: 100%;
@@ -87,7 +90,6 @@
   cursor: pointer;
 }
 .content-wrapper .ski-jumpers-table {
-  margin-top: 2em;
   border: 1px solid black;
   border-collapse: collapse;
 }

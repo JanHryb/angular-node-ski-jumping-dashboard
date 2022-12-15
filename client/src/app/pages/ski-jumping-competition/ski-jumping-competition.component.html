@@ -81,12 +81,12 @@
       </tr>
     </table>
   </div>
-  <div class="content-wrapper" *ngIf="detailPage">
+  <div class="content-wrapper content-wrapper-detail" *ngIf="detailPage">
     <form
       ngNativeValidate
       [formGroup]="addJumperListForm"
       (ngSubmit)="onSubmit2()"
-      class="form"
+      class="form form-detail"
     >
       <header class="header-wrapper">
         <h2 class="header">Add jumper</h2>
@@ -106,7 +106,10 @@
         <button type="submit" class="form-button">Add</button>
       </div>
     </form>
-    <table class="ski-jumpers-table" *ngIf="skiJumpingCompetition2.length > 0">
+    <table
+      class="ski-jumpers-table ski-jumpers-table-detail"
+      *ngIf="skiJumpingCompetition2.length > 0"
+    >
       <tr>
         <h2>Ski Competition</h2>
       </tr>
@@ -142,7 +145,10 @@
         </td>
       </tr>
     </table>
-    <table class="ski-jumpers-table" *ngIf="jumperList.length > 0">
+    <table
+      class="ski-jumpers-table ski-jumpers-table2-detail"
+      *ngIf="jumperList.length > 0"
+    >
       <tr>
         <h2>Participants</h2>
       </tr>

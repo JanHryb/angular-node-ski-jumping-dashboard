@@ -1,16 +1,19 @@
 .content-wrapper {
-  padding-top: 2em;
+  padding-top: 4em;
+  padding-bottom: 4em;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
   .form {
+    margin-right: 4em;
     padding: 2em;
     width: min-content;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     .form-items-wrapper {
       width: 100%;
       margin-top: 1.5em;
@@ -84,7 +87,6 @@
     }
   }
   .ski-jumpers-table {
-    margin-top: 2em;
     border: 1px solid black;
     border-collapse: collapse;
     tr {
